@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:red_egresados/ui/pages/content/location/location_screen.dart';
-import 'package:red_egresados/ui/pages/content/public_offers/public_offers_screen.dart';
-import 'package:red_egresados/ui/pages/content/states/states_screen.dart';
-import 'package:red_egresados/ui/pages/content/users_offers/users_offers_screen.dart';
-import 'package:red_egresados/ui/widgets/appbar.dart';
+import 'package:red_jugadores/ui/pages/content/location/location_screen.dart';
+import 'package:red_jugadores/ui/pages/content/public_offers/public_offers_screen.dart';
+import 'package:red_jugadores/ui/pages/content/states/states_screen.dart';
+import 'package:red_jugadores/ui/pages/content/users_offers/users_offers_screen.dart';
+import 'package:red_jugadores/ui/widgets/appbar.dart';
 
 class ContentPage extends StatefulWidget {
   const ContentPage({Key? key}) : super(key: key);
@@ -46,7 +46,7 @@ class _State extends State<ContentPage> {
     return Scaffold(
       appBar: CustomAppBar(
         picUrl: 'https://uifaces.co/our-content/donated/gPZwCbdS.jpg',
-        tile: const Text("Red Egresados"),
+        tile: const Text("Red Jugadores"),
         context: context,
         onSignOff: () {
           Get.offNamed('/auth');

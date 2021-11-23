@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:red_egresados/modelos/datospeli.dart';
+import 'package:red_jugadores/modelos/datospeli.dart';
 
 void main() => runApp(PeliPantalla());
 

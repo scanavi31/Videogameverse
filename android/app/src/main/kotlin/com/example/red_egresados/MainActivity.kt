@@ -1,4 +1,4 @@
-package com.example.red_egresados
+package com.example.red_jugadores
 
 import io.flutter.embedding.android.FlutterActivity
 
