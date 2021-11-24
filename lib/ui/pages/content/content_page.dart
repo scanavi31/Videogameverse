@@ -28,7 +28,7 @@ class _State extends State<ContentPage> {
           _content = const LocationScreen();
           break;
         case 2:
-          _content = const UsersOffersScreen();
+          _content = const StatesScreen();
           break;
         case 3:
           _content = const GameScreen();
@@ -37,7 +37,7 @@ class _State extends State<ContentPage> {
           _content = const ProfileScreen();
           break;
         default:
-          _content = const StatesScreen();
+          _content = const UsersOffersScreen();
       }
     });
   }

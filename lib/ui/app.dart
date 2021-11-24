@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:red_jugadores/ui/pages/authentication/auth_page.dart';
 import 'package:red_jugadores/ui/pages/content/content_page.dart';
+import 'package:red_jugadores/ui/pages/intro/intro_page.dart';
 import 'package:red_jugadores/ui/theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -20,9 +21,10 @@ class App extends StatelessWidget {
       darkTheme: MyTheme.darkTheme,
       // Por defecto tomara la seleccion del sistema
       themeMode: ThemeMode.system,
-      home: const AuthenticationPage(),
+      home: const IntroPage(),
       // We add the two possible routes
       routes: {
+        '/intro': (context) => const IntroPage(),
         '/auth': (context) => const AuthenticationPage(),
         '/content': (context) => const ContentPage(),
       },
