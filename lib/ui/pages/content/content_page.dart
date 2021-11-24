@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:red_jugadores/ui/pages/content/Game/game_screen.dart';
 import 'package:red_jugadores/ui/pages/content/location/location_screen.dart';
+import 'package:red_jugadores/ui/pages/content/profile/profile_screen.dart';
 import 'package:red_jugadores/ui/pages/content/public_offers/public_offers_screen.dart';
 import 'package:red_jugadores/ui/pages/content/states/states_screen.dart';
 import 'package:red_jugadores/ui/pages/content/users_offers/users_offers_screen.dart';
@@ -23,15 +25,16 @@ class _State extends State<ContentPage> {
       _selectedIndex = index;
       switch (_selectedIndex) {
         case 1:
-          _content = const UsersOffersScreen();
-          break;
-        case 2:
-          _content = const PublicOffersScreen();
-          break;
-        case 3:
           _content = const LocationScreen();
           break;
+        case 2:
+          _content = const UsersOffersScreen();
+          break;
+        case 3:
+          _content = const GameScreen();
+          break;
         case 4:
+          _content = const ProfileScreen();
           break;
         default:
           _content = const StatesScreen();
@@ -65,24 +68,24 @@ class _State extends State<ContentPage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.lightbulb_outline_rounded),
-            label: 'Estados',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group_outlined),
-            label: 'Social',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.public_outlined),
-            label: 'Verificado',
+            icon: Icon(Icons.public_rounded),
+            label: 'Red Social',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.place_outlined),
             label: 'Ubicación',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            label: 'Mensajes',
+            icon: Icon(Icons.chat),
+            label: 'Chat',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.videogame_asset_outlined),
+            label: 'Videojuegos',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Perfil',
           ),
         ],
         currentIndex: _selectedIndex,

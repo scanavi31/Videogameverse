@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:red_jugadores/ui/pages/content/content_page.dart';
+import 'package:red_jugadores/ui/pages/content/profile/profile_screen.dart';
 
 class CustomAppBar extends AppBar {
   final BuildContext context;
@@ -18,10 +20,17 @@ class CustomAppBar extends AppBar {
           key: key,
           centerTitle: true,
           leading: Center(
-            child: CircleAvatar(
-              minRadius: 18.0,
-              maxRadius: 18.0,
-              backgroundImage: NetworkImage(picUrl),
+            child: GestureDetector(
+              onTap: () {
+                print('onclick');
+                // We add the two possible routes
+                //const ProfileScreen();
+              },
+              child: CircleAvatar(
+                minRadius: 18.0,
+                maxRadius: 18.0,
+                backgroundImage: NetworkImage(picUrl),
+              ),
             ),
           ),
           title: tile,
