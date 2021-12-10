@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
+import 'package:red_jugadores/domain/use_cases/auth_management.dart';
+import 'package:red_jugadores/domain/use_cases/controllers/authentication.dart';
 
 class SignUpScreen extends StatefulWidget {
   final VoidCallback onViewSwitch;
@@ -14,6 +17,7 @@ class _State extends State<SignUpScreen> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final controller = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +37,7 @@ class _State extends State<SignUpScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
+              key: const Key("signUpName"),
               controller: nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -43,6 +48,7 @@ class _State extends State<SignUpScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
+              key: const Key("signUpEmail"),
               controller: emailController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -53,6 +59,7 @@ class _State extends State<SignUpScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
+              key: const Key("signUpPassword"),
               controller: passwordController,
               obscureText: true,
               obscuringCharacter: "*",
@@ -69,8 +76,12 @@ class _State extends State<SignUpScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(14.0),
                   child: ElevatedButton(
-                    onPressed: () {
-                      Get.offNamed('/content');
+                    onPressed: () async {
+                      var result = await AuthManagement.signUp(
+                          name: nameController.text,
+                          email: emailController.text,
+                          password: passwordController.text);
+                      controller.authenticated = result;
                     },
                     child: const Text("Registrar"),
                   ),

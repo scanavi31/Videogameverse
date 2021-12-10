@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:red_jugadores/ui/pages/content/content_page.dart';
-import 'package:red_jugadores/ui/pages/content/profile/profile_screen.dart';
+//import 'package:red_jugadores/ui/pages/content/content_page.dart';
+//import 'package:red_jugadores/ui/pages/content/profile/profile_screen.dart';
 
 class CustomAppBar extends AppBar {
   final BuildContext context;
@@ -36,6 +36,7 @@ class CustomAppBar extends AppBar {
           title: tile,
           actions: [
             IconButton(
+              key: const Key("themeAction"),
               icon: const Icon(
                 Icons.brightness_4_rounded,
               ),
@@ -45,6 +46,7 @@ class CustomAppBar extends AppBar {
               },
             ),
             IconButton(
+              key: const Key("logoutAction"),
               icon: const Icon(
                 Icons.logout,
               ),
