@@ -16,7 +16,7 @@ class _State extends State<IntroPage> {
     // ignore: todo
     // TODO: implement initState
     super.initState();
-    Timer(const Duration(seconds: 6), () => Get.offNamed('/auth'));
+    Timer(const Duration(seconds: 7), () => Get.offNamed('/auth'));
   }
 
   // We create a Scaffold that is used for all the content pages
@@ -35,27 +35,25 @@ class _State extends State<IntroPage> {
             children: <Widget>[
               Expanded(
                 flex: 2,
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 150.0,
-                        backgroundImage: AssetImage('assets/logo.jpg'),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.0),
-                      ),
-                      Text(
-                        'VideoGameVerse',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24.0),
-                      )
-                    ],
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const <Widget>[
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 150.0,
+                      backgroundImage: AssetImage('assets/logo.jpg'),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                    ),
+                    Text(
+                      'VideoGameVerse',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24.0),
+                    )
+                  ],
                 ),
               ),
               Expanded(

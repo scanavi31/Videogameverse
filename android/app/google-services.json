@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "552200670199",
+    "project_id": "redjugadores2021",
+    "storage_bucket": "redjugadores2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552200670199:android:9ad4bd459377e34bc73cf2",
+        "android_client_info": {
+          "package_name": "com.example.red_jugadores"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552200670199-8f2k2suqd8tp7bfpk4bf611js9ebgfh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAj_80s8mTrWZj54ZtTsWQC3f8raWVjHtw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552200670199-8f2k2suqd8tp7bfpk4bf611js9ebgfh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

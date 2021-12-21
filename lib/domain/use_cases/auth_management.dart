@@ -1,31 +1,34 @@
-import 'package:red_jugadores/data/repositories/auth.dart';
+import 'package:red_jugadores/data/repositories/password_auth.dart';
 
 class AuthManagement {
-  static final Auth _auth = Auth();
+  PasswordAuth auth = PasswordAuth();
 
-  static Future<bool> signIn(
-      {required String email, required String password}) async {
+  AuthManagement({
+    required this.auth,
+  });
+
+  Future<bool> signIn({required String email, required String password}) async {
     try {
-      return await _auth.signIn(email: email, password: password);
+      return await auth.signIn(email: email, password: password);
     } catch (e) {
       rethrow;
     }
   }
 
-  static Future<bool> signUp(
+  Future<bool> signUp(
       {required String name,
       required String email,
       required String password}) async {
     try {
-      return await _auth.signUp(name: name, email: email, password: password);
+      return await auth.signUp(name: name, email: email, password: password);
     } catch (e) {
       rethrow;
     }
   }
 
-  static Future<bool> signOut() async {
+  Future<bool> signOut() async {
     try {
-      return await _auth.signOut();
+      return await auth.signOut();
     } catch (e) {
       rethrow;
     }

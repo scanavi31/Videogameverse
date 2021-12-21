@@ -1,14 +1,25 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:red_jugadores/data/repositories/password_auth.dart';
 import 'package:red_jugadores/domain/use_cases/auth_management.dart';
 
 void main() {
+  late AuthManagement management;
+
+  setUp(() {
+    management = AuthManagement(
+      auth: PasswordAuth(),
+    );
+  });
   // AuthManagement uses Auth for management
   // Contrast method result with expected value
   test(
     "SignIn valid",
     () async {
       expect(
-          await AuthManagement.signIn(email: "admin", password: "admin"), true);
+          await management.signIn(
+              email: "barry.allen@example.com",
+              password: "SuperSecretPassword!"),
+          true);
     },
   );
 
@@ -16,8 +27,7 @@ void main() {
     "SignIn invalid",
     () async {
       expect(
-          await AuthManagement.signIn(
-              email: "example@gamil.com", password: "123456"),
+          await management.signIn(email: "user@test.com", password: "123456"),
           false);
     },
   );
@@ -26,10 +36,10 @@ void main() {
     "SignUp valid",
     () async {
       expect(
-          await AuthManagement.signUp(
-              name: "Ivan",
-              email: "darioidcs@hotmail.com",
-              password: "Admin_Ivan10*"),
+          await management.signUp(
+              name: "User",
+              email: "barry.allen@example.com",
+              password: "SuperSecretPassword!"),
           true);
     },
   );
@@ -38,9 +48,9 @@ void main() {
     "SignUp invalid",
     () async {
       expect(
-          await AuthManagement.signUp(
-            name: "Pedro",
-            email: "example@hotmail.com",
+          await management.signUp(
+            name: "User",
+            email: "usertest.xys",
             password: "1456",
           ),
           false);
@@ -50,7 +60,7 @@ void main() {
   test(
     "SignOut validation",
     () async {
-      expect(await AuthManagement.signOut(), true);
+      expect(await management.signOut(), true);
     },
   );
 }

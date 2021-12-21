@@ -1,4 +1,91 @@
 import 'package:flutter/material.dart';
+import 'package:red_jugadores/domain/controllers/authentications.dart';
+import 'package:red_jugadores/domain/controllers/connectivity.dart';
+import 'package:red_jugadores/domain/controllers/themecontroller.dart';
+import 'package:red_jugadores/ui/pages/content/Game/game_screen.dart';
+import 'package:red_jugadores/ui/pages/content/chat/chat_screen.dart';
+import 'package:red_jugadores/ui/pages/content/location/location_screen.dart';
+//import 'package:red_jugadores/ui/pages/content/profile/profile_screen.dart';
+//import 'package:red_jugadores/ui/pages/content/chats/chat_screen.dart';
+//import 'package:red_jugadores/ui/pages/content/public_offers/public_offers_screen.dart';
+import 'package:red_jugadores/ui/pages/content/states/states_screen.dart';
+import 'package:red_jugadores/ui/pages/content/users_offers/users_offers_screen.dart';
+import 'package:get/get.dart';
+
+class ContentPage extends StatelessWidget {
+  const ContentPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Controllerauth controluser = Get.find();
+    ThemeController controltema = Get.find();
+    ConnectivityController connectivityController =
+        Get.find<ConnectivityController>();
+
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            // Icons.light_mode_rounded
+            // Icons.dark_mode_rounded,
+            IconButton(
+              onPressed: () {
+                controltema.selecciontema();
+              },
+              icon: Obx(
+                () => Icon(
+                  (controltema.themedark)
+                      ? Icons.light_mode_rounded
+                      : Icons.dark_mode_rounded,
+                ),
+              ),
+            ),
+            IconButton(
+                onPressed: () async {
+                  await controluser.logOut();
+                  Get.offAllNamed('/auth');
+                },
+                icon: const Icon(Icons.exit_to_app_rounded))
+          ],
+          bottom: const TabBar(
+            tabs: [
+              Tab(icon: Icon(Icons.public_rounded)),
+              Tab(icon: Icon(Icons.access_time)),
+              Tab(icon: Icon(Icons.videogame_asset_outlined)),
+              Tab(icon: Icon(Icons.gps_fixed)),
+              Tab(icon: Icon(Icons.person)),
+            ],
+          ),
+          title: const Text('Red Jugadores VG'),
+        ),
+        body: TabBarView(
+          children: [
+            Obx(() => (connectivityController.connected)
+                ? const UsersOffersScreen()
+                : const Center(child: Icon(Icons.wifi_off))),
+            Obx(() => (connectivityController.connected)
+                ? const ListaEstados()
+                : const Center(child: Icon(Icons.wifi_off))),
+            Obx(() => (connectivityController.connected)
+                ? const GameScreen()
+                : const Center(child: Icon(Icons.wifi_off))),
+            Obx(() => (connectivityController.connected)
+                ? const LocationScreen()
+                : const Center(child: Icon(Icons.wifi_off))),
+            Obx(() => (connectivityController.connected)
+                ? const ListaMensajes()
+                : const Center(child: Icon(Icons.wifi_off))),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+/*
+import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/get.dart';
 import 'package:red_jugadores/domain/use_cases/controllers/authentication.dart';
@@ -6,6 +93,7 @@ import 'package:red_jugadores/domain/use_cases/controllers/ui.dart';
 import 'package:red_jugadores/ui/pages/content/Game/game_screen.dart';
 import 'package:red_jugadores/ui/pages/content/location/location_screen.dart';
 import 'package:red_jugadores/ui/pages/content/profile/profile_screen.dart';
+//import 'package:red_jugadores/ui/pages/content/chats/chat_screen.dart';
 //import 'package:red_jugadores/ui/pages/content/public_offers/public_offers_screen.dart';
 import 'package:red_jugadores/ui/pages/content/states/states_screen.dart';
 import 'package:red_jugadores/ui/pages/content/users_offers/users_offers_screen.dart';
@@ -20,7 +108,7 @@ class ContentPage extends StatelessWidget {
       case 1:
         return const LocationScreen();
       case 2:
-        return const StatesScreen();
+        return const ListaEstados();
       case 3:
         return const GameScreen();
       case 4:
@@ -40,11 +128,12 @@ class ContentPage extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
-        picUrl: 'https://uifaces.co/our-content/donated/gPZwCbdS.jpg',
-        tile: const Text("Red Jugadores"),
         context: context,
+        controller: controller,
+        picUrl: 'https://uifaces.co/our-content/donated/gPZwCbdS.jpg',
+        tile: const Text("Red Jugadores VG"),
         onSignOff: () {
-          authController.authenticated = false;
+          authController.manager.signOut();
         },
       ),
       body: SafeArea(
@@ -75,10 +164,10 @@ class ContentPage extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.chat,
-                  key: Key("chatSection"),
+                  Icons.lightbulb_outline_rounded,
+                  key: Key("statesSection"),
                 ),
-                label: 'Chat',
+                label: 'Estados',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
@@ -94,6 +183,12 @@ class ContentPage extends StatelessWidget {
                 ),
                 label: 'Perfil',
               ),
+              /*BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.chat_bubble_outline,
+                ),
+                label: 'Mensajes',
+              ),*/
             ],
             currentIndex: controller.screenIndex,
             onTap: (index) {
@@ -103,7 +198,7 @@ class ContentPage extends StatelessWidget {
     );
   }
 }
-
+*/
 
 /*
 
@@ -189,5 +284,5 @@ class _State extends State<ContentPage> {
       ),
     );
   }
-}
-*/
+}*/
+
